@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- For styles with static names... -->
+<link href="{{ 'assets/css/style.css' | relative_url }}" rel="stylesheet">
+    <style>
+      body {
+          font-family: 'Abel';font-size: 14px;
+      }
+      </style>
+  </head>
+
+  <body>
+    {% include sidebar.html %}
+    {% include headerbar.html %}
+    <div class = "maincontent">
+      {% include photo_carousel_2.html %}
+      {{ content }}
+    </div>
+  </body>
+</html>
