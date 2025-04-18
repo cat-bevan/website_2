@@ -16,6 +16,12 @@
 
   body {
           font-family: 'Abel';font-size: 14px;
+	  display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
   }
   .images {
     max-width: 1200px;
@@ -59,6 +65,15 @@
     text-align: justify;
     margin-bottom: 75px;
   }
+	    .circular-frame {
+    width: 200px; /* Set the desired width */
+    height: 200px; /* Set the desired height */
+    background-size: cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    border-radius: 50%; /* Make the div circular */
+    overflow: hidden; /* Hide any overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual appeal */
+}
 
       </style>
   </head>
@@ -75,6 +90,8 @@
 
     
     <div class = "titlebar">Cat Bevan Game Audio</div>
+
+	<div class="circular-frame" style="background-image: url('img_avatar.png');"></div>
 
 <meta name="Location" class="staticSearch_feat" content="Alberta - South" />
 
