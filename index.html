@@ -1,22 +1,84 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta name="Document type"
- class="staticSearch_desc" content="Poems"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <meta charset="utf-8"></meta>
-    <meta name="Location" class="staticSearch_feat" content="Greater Toronto Area"></meta>
-    <meta name="Occupation" class="staticSearch_feat" content="Education"></meta>
-    <meta name="City" class="staticSearch_feat" content="Scarborough"></meta>
     <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'></link>
-    <title>Cat Bevan Game Audio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+    <title>Catherine Bevan - VR/XR</title>
     <link rel="stylesheet" href="main.css"></link>
     <style>
        /* Style the Image Used to Trigger the Modal */
 
   body {
           font-family: 'Abel';font-size: 14px;
+          background-color: black;
+          color: azure;
   }
+
+header {
+  position: fixed;
+  font-family: 'Rubik Glitch', system-ui;
+  color:azure;
+  font-size: 1.1em;
+  top: 0;
+  width: 100%;
+  background: #161616;
+  z-index: 1000;
+}
+
+/* Inner wrapper */
+.header-inner {
+  max-width: 90%;   /* control how wide the border goes */
+  margin: 0 auto;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid azure /* border is only under this inner container */
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* spacing between logo and nav */
+}
+
+header .logo img {
+  height: 40px;
+  background-size: cover; /* Ensure the image covers the entire div */
+    background-position: center; /* Center the image */
+    border-radius: 50%; /* Make the div circular */
+    overflow: hidden; /* Hide any overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual appeal */
+	margin: auto;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+header nav a, 
+header .nav-right a {
+  text-decoration: none;
+  color: azure;
+  font-weight: normal;
+  font-size: 1.2em;
+  transition: color 0.3s ease; /* smooth fade */
+}
+
+header nav a:hover,
+header .nav-right a:hover {
+  color: #dd77f7; /* lighter grey on hover */
+}
+
+header .nav-right {
+  display: flex;
+  gap: 20px;
+}
+
   .images {
     max-width: 1200px;
     margin: auto;
@@ -45,6 +107,7 @@
 
   .titlebar {
     margin-bottom: 5px;
+    font-family: 'Rubik Glitch', system-ui;
     margin-top: 76px;
     font-size: 2.9em;
     justify-content: center;
@@ -57,6 +120,7 @@
     max-width: 1200px;
     font-size: 1.7em;
     text-align: justify;
+    z-index: 3;
   }
 	    .circular-frame {
     width: 200px; /* Set the desired width */
@@ -75,7 +139,112 @@
     padding: 50px 20px; /* Adjust padding for the banner */
     text-align: center; /* Center the content within the banner */
 	margin-bottom: 15px;
+  }
+
+  .banner::before,
+.banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;       /* adjust how wide the fade is */
+  height: 680px;
+  z-index: 2;
+  pointer-events: none; /* don’t block clicks */
 }
+
+.banner::before {
+  left: 0;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+}
+
+.banner::after {
+  right: 0;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+}
+
+  .stories-section {
+  text-align: center;
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stories-grid {
+  display: grid;
+  margin-top: -10px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.story-card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+.story-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.story-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(109, 109, 109, 0.3);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-family: 'Rubik Glitch', system-ui;
+  font-size: 2.4em;
+}
+
+
+.story-card:hover img {
+  filter: invert(100%);
+  transition: 0.4s ease;
+}
+
+.portfolio-container {
+  display: flex;
+  margin: auto;
+  max-width: 1200px;
+}
+
+.portfolio-container img {
+  width: 30%;
+  min-width: 30%;
+  height: auto;
+  z-index: -1;
+  padding: 15px 15px;
+  aspect-ratio: 1/1;
+  display: block;
+}
+
+.portfolio-text {
+  position: relative;
+  z-index: 3;
+  padding: 0px 5px;
+}
+
+ .content2 {
+    font-size: 1.5em;
+    text-align: left;
+    z-index: 3;
+  }
+
+.content2 a {
+  color:aqua;
+}
+
+
 
       </style>
   </head>
@@ -85,22 +254,70 @@
     <head>
   <link rel="stylesheet" href="main.css"></link>
 </head>
-<div class = "headerbar">
-	<div style = "position: absolute; left: 0; width: 700px; height: 70px;"></div>
-	<div style="margin-right: 22px;"><a href="/">HOME</a> | <a href="/cv">CV</a></div>
+
+<!-- <header>
+  <div class="header-inner">
+    <div class="left-group">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gameaudio.html">Game Audio</a></li>
+        <li><a href="/vrxr.html">VR/XR</a></li>
+        <li><a href="/research.html">Research</a></li>
+      </ul>
+    </nav>
+    </div>
+    <div class="nav-right">
+      <a href="/aboutme.html">About  Me</a>
+      <a href="/cv.html">CV</a>
+    </div>
+  </div>
+</header> -->
+
+<div class="banner" style="background-image: url('vrbanner.png');">
+    <div class = "titlebar">Catherine Bevan</div>
+<div class="titlebar"> <iframe style="margin-top: -30px;" width="672" height="378" src="https://www.youtube.com/embed/HPUpPxhwJ1M?si=zGXMywSDZUQVHvJO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 </div>
 
-<div class="banner" style="background-image: url('studio_blurred.jpg');">
-    <div class = "titlebar">Cat Bevan Game Audio</div>
-	<div class="circular-frame" style="background-image: url('img_avatar.png');"></div>
+<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+
+<p class = "content" style="margin-top:30px;">I specialize in designing and implementing interactive spatial audio for VR experiences, bringing heightened immersion and dynamism to each project. Using industry-standard software such as Unity, the XR Interactive Toolkit, and Wwise audio middleware, my work in VR culminated in the solo development of my Masters thesis: a 10-15 minute VR experience which sought to provide artistic reflection upon the act of self-disclosing to technology.</p>
+
+<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+
+<div class = "portfolio-container">
+  <img src="neverleft.png">
+  <div class = "portfolio-text">
+  <h1 style="font-family: 'Rubik Glitch', system-ui;"><i>never left</i></h1>
+  <p class = "content" style="margin-top: -25px;">Masters Thesis. Solo Developer.</p>
+  <p class = "content2"><i>never left</i> is an attempt to artistically reappropriate and re-sanctify the act of self-disclosing to technology. Prompting the player with the question "Where do you call home?", the game presents the player with a large virtual space through which to fly and reflect upon glitch-like visuals, navigable music, and anonymously sourced answers to the aforementioned question, eventually culminating in the opportuntity for the player to submit their own answer.</p>
+  <p class = "content2">My first "solo dev" experience with VR, <i>never left</i> marked an important milestone in my VR/XR journey. Requiring intimate familiarity with Unity's XR Interactive Toolkit, dozens of C# scripts, the implementation and creation of hundreds of interactive audio assets, and even the fringe usage of Blender and other software tools, <i>never left</i> was an invaluable learning experience.</p>
+  <p class = "content2">To read the thesis document, click <a href="Bevan_Catherine_I_202510_MA.pdf" target="_blank">here.</a> To watch a full video playthrough of the work, click <a href="https://youtu.be/08fwTDi3ro4" target="_blank">here.</a></p>
+  </div>
 </div>
 
-<p class = "content" style="margin-top: 30px;margin-bottom: 15px;">Thanks for checking out the site! It is still heavily under construction at the moment, but I'd love to get in touch! Links to my socials <a href="#bottom">at the bottom.</a></p>
+<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
 
-<div class="titlebar"> <iframe style="margin-top: -20px;" width="672" height="378" src="https://www.youtube.com/embed/EQyq2HPA0jw?si=TIEE831uvFV31Dx3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<div class = "portfolio-container">
+  <div class = "portfolio-text">
+  <h1 style="font-family: 'Rubik Glitch', system-ui;"><i>Your Data Body</i></h1>
+  <p class = "content" style="margin-top: -25px;">Audio Games Lab @ UAlberta. Technical Audio Lead.</p>
+  <p class = "content2">Bringing together an interdisciplinary team of researchers and artists across the University of Alberta, <i>Your Data Body</i> has been featured in several VR exhibits, including the <i>Know Thyself as a Virtual Reality</i> exhibit of 2023. Led by visual artist Marilene Oliver, the project grapples with how we interact with, and are responsible for, the data of others.</p>
+  <p class = "content2">As the technical audio lead on a 4-person audio team, my responsibilities spanned establishing naming conventions for our hundreds of audio files, creating and maintaining asset tracking spreadsheets, editing and preparing audio as required to fit the needs of the game engine, and implementing each audio file using a combination of Unity scripting and Wwise audio middleware.</p>
+  <p class = "content2">Supervisor Scott Smallwood and I were accepted to present on our work on <i>Your Data Body</i> at GameSoundCon 2023 in Los Angeles, California. For more information about the project, click <a target="_blank" href="https://www.knowthyself.ualberta.ca/your-data-body/">here.</a></p>
+  </div>
+  <img src="ydb.png">
+</div>
 
-<p class = "content" style="margin-top:30px;">Add me on Discord (username binaryfailure): <a href="https://discord.com/users/662411913195421758" target="_blank"><img src="discord.png" style="width:36px;height:36px;margin-bottom:-10px;"></a></p>
-<p class = "content" style="margin-top:10px;">Send me an email at catbevan@pm.me: <a href="mailto:catbevan@pm.me" target="_blank"><img src="email.png" style="width:36px;height:36px;margin-bottom:-10px;"></a></p>
-<p class = "content" style="margin-top:10px;">Check out more of my music on SoundCloud: <a href="https://soundcloud.com/cat-bevan-game-music" target="_blank"><img src="soundcloud.png" style="width:36px;height:36px;margin-bottom:-10px;"></a></p>
-<p class = "content" style="margin-top:10px;">Play the games I've been a part of on Itch: <a href="https://catbevan.itch.io" target="_blank"><img src="itch.png" style="width:36px;height:36px;margin-bottom:-10px;"></a></p>  
-<div id="bottom"></div>	
+<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+
+<div class = "portfolio-container">
+  <img src="unleashed.png">
+  <div class = "portfolio-text">
+  <h1 style="font-family: 'Rubik Glitch', system-ui;"><i>Unleashed</i></h1>
+  <p class = "content" style="margin-top: -25px;">48hr Alberta Game Jam. Implementation, Composer, Sound Designer.</p>
+  <p class = "content2">Created in tandem with Red Iron Co-Founder Lloyd Summers and a small team of 3D artists, <i>Unleashed</i> was created in under 48 hours for the 2023 Alberta Game Jam. <i>Unleashed</i> is a simple game in which the player assumes the role of a creature attempting to escape military captivity.</p>
+  <p class = "content2">Given the light horror themes, I set out to create subtle-yet-ominous music, a vaguely alien soundscape, and imposing enemy sound design. The majority of my focus however, was spent on implementing the audio in 3D space using the state-of-the-art spatial audio capabilities of Wwise and Unity. Realistic reverb zones seamlessly connected through sonic portals, ambisonics and binaural rendering for increased directional distinction, and life-like obstruction + diffraction on in-game objects all come together to create a truly immersive VR experience.</p>
+  </div>
+  
+</div>
