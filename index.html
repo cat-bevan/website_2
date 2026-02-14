@@ -1,323 +1,560 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-    <meta charset="utf-8"></meta>
-    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'></link>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
-    <title>Catherine Bevan - VR/XR</title>
-    <link rel="stylesheet" href="main.css"></link>
-    <style>
-       /* Style the Image Used to Trigger the Modal */
-
-  body {
-          font-family: 'Abel';font-size: 14px;
-          background-color: black;
-          color: azure;
-  }
-
-header {
-  position: fixed;
-  font-family: 'Rubik Glitch', system-ui;
-  color:azure;
-  font-size: 1.1em;
-  top: 0;
-  width: 100%;
-  background: #161616;
-  z-index: 1000;
-}
-
-/* Inner wrapper */
-.header-inner {
-  max-width: 90%;   /* control how wide the border goes */
-  margin: 0 auto;
-  padding: 5px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid azure /* border is only under this inner container */
-}
-
-.left-group {
-  display: flex;
-  align-items: center;
-  gap: 40px; /* spacing between logo and nav */
-}
-
-header .logo img {
-  height: 40px;
-  background-size: cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    border-radius: 50%; /* Make the div circular */
-    overflow: hidden; /* Hide any overflow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual appeal */
-	margin: auto;
-}
-
-header nav ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-header nav a, 
-header .nav-right a {
-  text-decoration: none;
-  color: azure;
-  font-weight: normal;
-  font-size: 1.2em;
-  transition: color 0.3s ease; /* smooth fade */
-}
-
-header nav a:hover,
-header .nav-right a:hover {
-  color: #dd77f7; /* lighter grey on hover */
-}
-
-header .nav-right {
-  display: flex;
-  gap: 20px;
-}
-
-  .images {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  .stickyTest {
-    position: sticky;
-    top: 0;
-  }
-  .headerImg {
-    white-space: pre-line;
-    width: 50%;
-    margin-right: 5px;
-    transition: opacity 0.3s ease-in-out;
-    height: auto;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-  }
-
-  #img_prev:hover {opacity: 0.7;}
-  #img_pres:hover {opacity: 0.7;}
-
-  .titlebar {
-    margin-bottom: 5px;
-    font-family: 'Rubik Glitch', system-ui;
-    margin-top: 76px;
-    font-size: 2.9em;
-    justify-content: center;
-    text-align: center;
-    font-weight: bold;
-	color: white;
-  }
-  .content {
-    margin: auto;
-    max-width: 1200px;
-    font-size: 1.7em;
-    text-align: justify;
-    z-index: 3;
-  }
-	    .circular-frame {
-    width: 200px; /* Set the desired width */
-    height: 200px; /* Set the desired height */
-    background-size: cover; /* Ensure the image covers the entire div */
-    background-position: center; /* Center the image */
-    border-radius: 50%; /* Make the div circular */
-    overflow: hidden; /* Hide any overflow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual appeal */
-	margin: auto;
-	margin-bottom: 15px;
-}
-	    .banner {
-    background-size: cover; /* Ensure the banner image covers the entire div */
-    background-position: center; /* Center the banner image */
-    padding: 50px 20px; /* Adjust padding for the banner */
-    text-align: center; /* Center the content within the banner */
-	margin-bottom: 15px;
-  }
-
-  .banner::before,
-.banner::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 150px;       /* adjust how wide the fade is */
-  height: 680px;
-  z-index: 2;
-  pointer-events: none; /* don’t block clicks */
-}
-
-.banner::before {
-  left: 0;
-  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
-}
-
-.banner::after {
-  right: 0;
-  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
-}
-
-  .stories-section {
-  text-align: center;
-  padding: 80px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.stories-grid {
-  display: grid;
-  margin-top: -10px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 10px;
-}
-
-.story-card {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  aspect-ratio: 1 / 1;
-}
-
-.story-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.story-card .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(109, 109, 109, 0.3);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.4s ease;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  font-family: 'Rubik Glitch', system-ui;
-  font-size: 2.4em;
-}
-
-
-.story-card:hover img {
-  filter: invert(100%);
-  transition: 0.4s ease;
-}
-
-.portfolio-container {
-  display: flex;
-  margin: auto;
-  max-width: 1200px;
-}
-
-.portfolio-container img {
-  width: 30%;
-  min-width: 30%;
-  height: auto;
-  z-index: -1;
-  padding: 15px 15px;
-  aspect-ratio: 1/1;
-  display: block;
-}
-
-.portfolio-text {
-  position: relative;
-  z-index: 3;
-  padding: 0px 5px;
-}
-
- .content2 {
-    font-size: 1.5em;
-    text-align: left;
-    z-index: 3;
-  }
-
-.content2 a {
-  color:aqua;
-}
-
-
-
-      </style>
-  </head>
-
-  <body>
-    
-    <head>
-  <link rel="stylesheet" href="main.css"></link>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catherine Bevan - Game Audio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body>
 
-<!-- <header>
-  <div class="header-inner">
-    <div class="left-group">
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/gameaudio.html">Game Audio</a></li>
-        <li><a href="/vrxr.html">VR/XR</a></li>
-        <li><a href="/research.html">Research</a></li>
-      </ul>
-    </nav>
-    </div>
-    <div class="nav-right">
-      <a href="/aboutme.html">About  Me</a>
-      <a href="/cv.html">CV</a>
-    </div>
-  </div>
-</header> -->
+  <!-- ── Top Navigation ─────────────────────────────── -->
 
-<div class="banner" style="background-image: url('vrbanner.png');">
-    <div class = "titlebar">Catherine Bevan</div>
-<div class="titlebar"> <iframe style="margin-top: -30px;" width="672" height="378" src="https://www.youtube.com/embed/HPUpPxhwJ1M?si=zGXMywSDZUQVHvJO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-</div>
+  <main>
 
-<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+    <!-- ── Page Hero ──────────────────────────────────── -->
+    <section class="page-hero">
+      <span class="hero__eyebrow">// Catherine Bevan</span>
+      <!--
+        data-text must match the visible text for glitch layers.
+        This uses glitch-title--page for a smaller size than the home name.
+      -->
+      <h1 class="glitch-title glitch-title--page" data-text="Music Composition">
+        Music Composition
+      </h1>
+    </section>
 
-<p class = "content" style="margin-top:30px;">I specialize in designing and implementing interactive spatial audio for VR experiences, bringing heightened immersion and dynamism to each project. Using industry-standard software such as Unity, the XR Interactive Toolkit, and Wwise audio middleware, my work in VR culminated in the solo development of my Masters thesis: a 10-15 minute VR experience which sought to provide artistic reflection upon the act of self-disclosing to technology.</p>
+    <div class="section-divider"></div>
 
-<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+    <!-- ── Music Demo Reel ────────────────────────────── -->
+    <section class="reel">
+      <span class="reel__label">// reel_music.mp4</span>
+      <div class="reel__frame-wrap framed">
+        <iframe
+          src="https://www.youtube.com/embed/r_1BmwVOQ94?si=EiISTvPtJWb6xqE4"
+          title="Music Reel"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
 
-<div class = "portfolio-container">
-  <img src="neverleft.png">
-  <div class = "portfolio-text">
-  <h1 style="font-family: 'Rubik Glitch', system-ui;"><i>never left</i></h1>
-  <p class = "content" style="margin-top: -25px;">Masters Thesis. Solo Developer.</p>
-  <p class = "content2"><i>never left</i> is an attempt to artistically reappropriate and re-sanctify the act of self-disclosing to technology. Prompting the player with the question "Where do you call home?", the game presents the player with a large virtual space through which to fly and reflect upon glitch-like visuals, navigable music, and anonymously sourced answers to the aforementioned question, eventually culminating in the opportuntity for the player to submit their own answer.</p>
-  <p class = "content2">My first "solo dev" experience with VR, <i>never left</i> marked an important milestone in my VR/XR journey. Requiring intimate familiarity with Unity's XR Interactive Toolkit, dozens of C# scripts, the implementation and creation of hundreds of interactive audio assets, and even the fringe usage of Blender and other software tools, <i>never left</i> was an invaluable learning experience.</p>
-  <p class = "content2">To read the thesis document, click <a href="Bevan_Catherine_I_202510_MA.pdf" target="_blank">here.</a> To watch a full video playthrough of the work, click <a href="https://youtu.be/08fwTDi3ro4" target="_blank">here.</a></p>
-  </div>
-</div>
+    <!-- ── Game Inspirations ──────────────────────────── -->
+    <section class="inspo-section">
+      <p class="inspo-label">Games that inspire my music&hellip;</p>
+      <div class="capsule-grid">
+        <div class="capsule framed">
+          <a href="https://store.steampowered.com/app/257850/Hyper_Light_Drifter/" target="_blank"><img src="/assets/hyperlight.jpg" alt="Hyperlight Drifter" /></a>
+        </div>
 
-<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+        <div class="capsule framed">
+          <a href="https://store.steampowered.com/app/423230/Furi/" target="_blank"><img src="/assets/furi.jpg" alt="Furi" /></a>
+        </div>
 
-<div class = "portfolio-container">
-  <div class = "portfolio-text">
-  <h1 style="font-family: 'Rubik Glitch', system-ui;"><i>Your Data Body</i></h1>
-  <p class = "content" style="margin-top: -25px;">Audio Games Lab @ UAlberta. Technical Audio Lead.</p>
-  <p class = "content2">Bringing together an interdisciplinary team of researchers and artists across the University of Alberta, <i>Your Data Body</i> has been featured in several VR exhibits, including the <i>Know Thyself as a Virtual Reality</i> exhibit of 2023. Led by visual artist Marilene Oliver, the project grapples with how we interact with, and are responsible for, the data of others.</p>
-  <p class = "content2">As the technical audio lead on a 4-person audio team, my responsibilities spanned establishing naming conventions for our hundreds of audio files, creating and maintaining asset tracking spreadsheets, editing and preparing audio as required to fit the needs of the game engine, and implementing each audio file using a combination of Unity scripting and Wwise audio middleware.</p>
-  <p class = "content2">Supervisor Scott Smallwood and I were accepted to present on our work on <i>Your Data Body</i> at GameSoundCon 2023 in Los Angeles, California. For more information about the project, click <a target="_blank" href="https://www.knowthyself.ualberta.ca/your-data-body/">here.</a></p>
-  </div>
-  <img src="ydb.png">
-</div>
+        <div class="capsule framed">
+          <a href="https://store.steampowered.com/app/638230/Journey/" target="_blank"><img src="/assets/journey.jpg" alt="Journey" /></a>
+        </div>
 
-<div class = "header-inner" style="margin-top: 18px; opacity: 0.5;"></div>
+      </div>
+    </section>
 
-<div class = "portfolio-container">
-  <img src="unleashed.png">
-  <div class = "portfolio-text">
-  <h1 style="font-family: 'Rubik Glitch', system-ui;"><i>Unleashed</i></h1>
-  <p class = "content" style="margin-top: -25px;">48hr Alberta Game Jam. Implementation, Composer, Sound Designer.</p>
-  <p class = "content2">Created in tandem with Red Iron Co-Founder Lloyd Summers and a small team of 3D artists, <i>Unleashed</i> was created in under 48 hours for the 2023 Alberta Game Jam. <i>Unleashed</i> is a simple game in which the player assumes the role of a creature attempting to escape military captivity.</p>
-  <p class = "content2">Given the light horror themes, I set out to create subtle-yet-ominous music, a vaguely alien soundscape, and imposing enemy sound design. The majority of my focus however, was spent on implementing the audio in 3D space using the state-of-the-art spatial audio capabilities of Wwise and Unity. Realistic reverb zones seamlessly connected through sonic portals, ambisonics and binaural rendering for increased directional distinction, and life-like obstruction + diffraction on in-game objects all come together to create a truly immersive VR experience.</p>
-  </div>
-  
-</div>
+    <div class="section-divider"></div>
+
+    <!-- ── Prose ──────────────────────────────────────── -->
+    <section class="prose-section">
+      <p>
+            Coming from a Master's degree in Composition, I am the winner of multiple music-related awards and contests.  
+            My music is highly versatile, poignant, and perhaps just a touch dramatic. I am particularly experienced with non-linear, interactive,
+            and adaptive approaches to musical structure, using middleware tools like FMOD and Wwise to craft living and breathing 
+            soundtracks during gameplay. 
+          </p>
+          <p>
+            While my stylistic versatility is one of my greatest strengths, I get particularly excited when working in styles 
+            adjacent to Drum and Bass, IDM, Synthwave, Lo-Fi, or even some good ol' solo piano. And if you happen to have ambitions
+            of music which breaks expectations and does something truly creative and <i>weird</i>... I would LOVE the opportunity to flex my expertise
+             in experimental music :)
+
+          </p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── SoundCloud Tracks ───────────────────────────── -->
+    <section class="sc-section">
+      <span class="sc-section__label">// selected_works</span>
+
+      <div class="sc-list">
+
+        <!-- ── Track 01 — text LEFT, embed RIGHT ────────── -->
+        <article class="sc-track">
+
+          <div class="sc-track__info">
+            <span class="sc-track__index">01</span>
+            <h2 class="sc-track__title">Swim Like Hell</h2>
+            <div class="sc-track__meta">
+              <span class="sc-track__meta-item">
+                <span>GAME:</span>Don't Look Too Deep
+              </span>
+              <span class="sc-track__meta-item">
+                <span>YEAR:</span>2023
+              </span>
+            </div>
+            <div class="sc-track__moods">
+              <span class="sc-track__mood">Exhilarating</span>
+              <span class="sc-track__mood">Chase</span>
+              <span class="sc-track__mood">Electronic</span>
+            </div>
+            <p class="sc-track__desc">
+              Completed in a week with a team of 8 creatives and programmers, <i>Don't Look Too Deep</i> has the player 
+              take control of a curious diver determined to see what lies at the bottom of a very, very deep trench. 
+              <br><br>
+              <i>Swim Like Hell</i> is heard during the final sequence of the game, where the player upsets an enormous Lovecraftian horror 
+              and must frantically swim their way back to the surface with the creature hot on their heels. The track's roaring bass
+               is created from the same bass sound heard occassionally near the bottom of the trench, functioning as
+               a narrative "revealing": once muted and distant, the bass is now heard in its overpowering entirety. Watery synths 
+               and occassional low-pass filters help invoke a marine environment, while epic choral stabs give cinematic weight 
+               to the Lovecraftian pursuer.
+               <br><br>
+              Check out the game <a style="color: var(--accent);" target="_blank" href="https://petermatyja.itch.io/dont-look-too-deep">here</a>!
+            </p>
+          </div>
+
+          <div class="sc-track__embed">
+      
+            <div class="audio-player" data-src="/assets/swimLikeHell.mp3" data-bpm="120">  <!-- ← update path -->
+              <div class="audio-player__artwork framed">
+                <div class="audio-player__glow"></div>
+                <img src="/assets/dontswim.png" alt="Don't Look Too Deep" />  <!-- ← update src/alt -->
+              </div>
+              <div class="audio-player__controls">
+                <button class="audio-player__playpause" aria-label="Play">▶</button>
+                <div class="audio-player__timeline">
+                  <div class="audio-player__track">
+                    <div class="audio-player__progress"></div>
+                  </div>
+                </div>
+                <div class="audio-player__volume">
+                  <button class="audio-player__vol-btn" data-action="down">−</button>
+                  <span class="audio-player__vol-display">80</span>
+                  <button class="audio-player__vol-btn" data-action="up">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ── Track 02 — text RIGHT, embed LEFT ────────── -->
+        <article class="sc-track sc-track--flip">
+
+          <div class="sc-track__info">
+            <span class="sc-track__index">02</span>
+            <h2 class="sc-track__title">A Brighter Summer Day</h2>
+            <div class="sc-track__meta">
+              <span class="sc-track__meta-item">
+                <span>GAME:</span>My Shady Friend
+              </span>
+              <span class="sc-track__meta-item">
+                <span>YEAR:</span>2025
+              </span>
+            </div>
+            <div class="sc-track__moods">
+              <span class="sc-track__mood">Upbeat</span>
+              <span class="sc-track__mood">Fun</span>
+              <span class="sc-track__mood">Groovy</span>
+            </div>
+            <p class="sc-track__desc">
+              Winner of the 3rd Alberta Slow Jam, <i>My Shady Friend</i> was created in 2 weeks with game developer
+              Teddy "Kaboom" Edwards and artist Lisa Bourque. Following the story of a bee with an old "shady" friend (a tree)
+              trying to get his girlfriend out on bail, <i>My Shady Friend</i> is a silly game in which the player flies around
+              collecting and depositing pollen on their tree friend in an attempt to grow enough high-value fruit before time runs out.
+              <br><br>
+              As the daytime gameplay theme, <i>A Brighter Summer Day</i> was composed to support the game's lighthearted tone,
+              provide a bit of daytime 'groove', and feel at home next to the game's gorgeous visual style.
+              <br><br>
+              Check out the game <a style="color: var(--accent);" target="_blank" href="https://teddykaboom.itch.io/my-shady-friend">here</a>!
+            </p>
+          </div>
+
+          <div class="sc-track__embed">
+            <div class="audio-player" data-src="/assets/brighterSummerDay.mp3" data-bpm="56">  <!-- ← update path -->
+              <div class="audio-player__artwork framed">
+                <img src="/assets/shadyFriend.png" alt="A Brighter Summer Day" />  <!-- ← update src/alt -->
+                <div class="audio-player__glow"></div>
+              </div>
+              <div class="audio-player__controls">
+                <button class="audio-player__playpause" aria-label="Play">▶</button>
+                <div class="audio-player__timeline">
+                  <div class="audio-player__track">
+                    <div class="audio-player__progress"></div>
+                  </div>
+                </div>
+                <div class="audio-player__volume">
+                  <button class="audio-player__vol-btn" data-action="down">−</button>
+                  <span class="audio-player__vol-display">80</span>
+                  <button class="audio-player__vol-btn" data-action="up">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- ── Track 03 — text LEFT, embed RIGHT ────────── -->
+        <article class="sc-track">
+
+          <div class="sc-track__info">
+            <span class="sc-track__index">03</span>
+            <h2 class="sc-track__title">Acceptance</h2>
+            <div class="sc-track__meta">
+              <span class="sc-track__meta-item">
+                <span>GAME:</span>For Aspen
+              </span>
+              <span class="sc-track__meta-item">
+                <span>YEAR:</span>2023
+              </span>
+            </div>
+            <div class="sc-track__moods">
+              <span class="sc-track__mood">Bittersweet</span>
+              <span class="sc-track__mood">Emotional</span>
+              <span class="sc-track__mood">Poignant</span>
+            </div>
+            <p class="sc-track__desc">
+              Created with developer "Applepiesleth" and artist Julia Yang, <i>For Aspen</i> has the player character
+              exploring their own mindscape in a gorgeous and meditative environment as they grapple with the five stages of grief.
+              <br><br>
+              Heard only during the final scene, <i>Acceptance</i> plays while the player has their last conversation
+              with the personifications of grief and the memory of their lost partner. It's a delicate and heartwrenching
+              moment, requiring a careful touch with the music. As such, I went with a bittersweet solo piano piece with subtle
+              shifting harmonies and a human, improvised-like quality. Painstaking care was put into the precise timing of
+              each note to achieve an expressive, organic rhythmic cadence.
+              <br><br>
+               Check out the game <a style="color: var(--accent);" target="_blank" href="https://applepiesleth.itch.io/for-aspen">here</a>!
+            </p>
+          </div>
+
+          <div class="sc-track__embed">
+            <div class="audio-player" data-src="/assets/acceptance.mp3" data-bpm="172">  <!-- ← update path -->
+              <div class="audio-player__artwork framed">
+                <img src="/assets/forAspen.png" alt="For Aspen" />  
+              </div>
+              <div class="audio-player__controls">
+                <button class="audio-player__playpause" aria-label="Play">▶</button>
+                <div class="audio-player__timeline">
+                  <div class="audio-player__track">
+                    <div class="audio-player__progress"></div>
+                  </div>
+                </div>
+                <div class="audio-player__volume">
+                  <button class="audio-player__vol-btn" data-action="down">−</button>
+                  <span class="audio-player__vol-display">80</span>
+                  <button class="audio-player__vol-btn" data-action="up">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+                <!-- ── Track 04 — text RIGHT, embed LEFT ────────── -->
+        <article class="sc-track sc-track--flip">
+
+          <div class="sc-track__info">
+            <span class="sc-track__index">04</span>
+            <h2 class="sc-track__title">Who Gave These Children Recorders?!</h2>
+            <div class="sc-track__meta">
+              <span class="sc-track__meta-item">
+                <span>GAME:</span>Everfall
+              </span>
+              <span class="sc-track__meta-item">
+                <span>YEAR:</span>2022
+              </span>
+            </div>
+            <div class="sc-track__moods">
+              <span class="sc-track__mood">Humourous</span>
+              <span class="sc-track__mood">Cozy</span>
+              <span class="sc-track__mood">Fun</span>
+            </div>
+            <p class="sc-track__desc">
+              Nearing 10,000 plays on Itch, <i>Everfall</i> is a cozy narrative game where you play as a fox returning to their 
+              childhood home for the annual Autumn Festival. In a twist of events all too relatable, the player is quickly put to work 
+              with cleaning up the town with their trusty Leaf-Sucker! At least you get to meet some colourful characters across town...
+              <br><br>
+              <i>Who Gave These Children Recorders?!</i> is the character theme for a pair of annoying young twins who - you guessed it - own recorders. 
+               To emulate the chaos that is children playing recorders "together", I first captured myself playing the melody as poorly as I could, 
+               then muted that track while capturing the second part. A little bit of pitch shifting automation for that wonderful out-of-tune 
+               quality, and I had a pretty convincing faux performance of two kids playing recorder. The acoustic bass and finger snaps 
+               serve as the musical "adults" - but even adults can get thrown off when the kids are performing...
+              <br><br>
+              Check out the game <a style="color: var(--accent);" target="_blank" href="https://petermatyja.itch.io/everfall">here</a>!
+            </p>
+          </div>
+
+          <div class="sc-track__embed">
+            <div class="audio-player" data-src="/assets/everfallTwins.mp3" data-bpm="56">  <!-- ← update path -->
+              <div class="audio-player__artwork framed">
+                <img src="/assets/everfall.png" alt="Everfall" />  <!-- ← update src/alt -->
+              </div>
+              <div class="audio-player__controls">
+                <button class="audio-player__playpause" aria-label="Play">▶</button>
+                <div class="audio-player__timeline">
+                  <div class="audio-player__track">
+                    <div class="audio-player__progress"></div>
+                  </div>
+                </div>
+                <div class="audio-player__volume">
+                  <button class="audio-player__vol-btn" data-action="down">−</button>
+                  <span class="audio-player__vol-display">80</span>
+                  <button class="audio-player__vol-btn" data-action="up">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+                <!-- ── Track 05 — text LEFT, embed RIGHT ────────── -->
+        <article class="sc-track">
+
+          <div class="sc-track__info">
+            <span class="sc-track__index">05</span>
+            <h2 class="sc-track__title">The Fatemaster</h2>
+            <div class="sc-track__meta">
+              <span class="sc-track__meta-item">
+                <span>GAME:</span>Warp Speed and Witchcraft: Disastrous Dating Sim
+              </span>
+              <span class="sc-track__meta-item">
+                <span>YEAR:</span>2025
+              </span>
+            </div>
+            <div class="sc-track__moods">
+              <span class="sc-track__mood">Mysterious</span>
+              <span class="sc-track__mood">Ephemeral</span>
+            </div>
+            <p class="sc-track__desc">
+              From the creator of a webcomic with over 7 million reads and counting, <i>Warp Speed and Witchcraft: Disastrous Dating Sim</i> is an upcoming
+              Steam game which brings the beloved universe, characters, and hijinks to a minigame-packed visual novel.
+              <br><br>
+              One of two tracks I have composed for this game, <i>The Fatemaster</i> is the character theme for a beautiful, benevolent, 
+              and mysterious spirit who manipulates time and weaves the threads of those destined to be together. Time-related motifs like
+              reversed plucks and the tick-tock of a clock are interspersed through the ephemeral track, while elements of the instrumentation were chosen to 
+              support the Chinese-inspired character design of the Fatemaster.
+              <br><br>
+               Check out the Steam page <a style="color: var(--accent);" target="_blank" href="https://store.steampowered.com/app/3648070/Warp_Speed_and_Witchcraft_Disastrous_Dating_Sim/">here</a>!
+            </p>
+          </div>
+
+          <div class="sc-track__embed">
+            <div class="audio-player" data-src="/assets/fatemaster.mp3" data-bpm="52.5">  <!-- ← update path -->
+              <div class="audio-player__artwork framed">
+                <img src="/assets/warpspeed.png" alt="Warp Speed and Witchcraft" />  
+                <div class="audio-player__glow"></div>
+              </div>
+              <div class="audio-player__controls">
+                <button class="audio-player__playpause" aria-label="Play">▶</button>
+                <div class="audio-player__timeline">
+                  <div class="audio-player__track">
+                    <div class="audio-player__progress"></div>
+                  </div>
+                </div>
+                <div class="audio-player__volume">
+                  <button class="audio-player__vol-btn" data-action="down">−</button>
+                  <span class="audio-player__vol-display">80</span>
+                  <button class="audio-player__vol-btn" data-action="up">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+                        <!-- ── Track 06 — text RIGHT, embed LEFT ────────── -->
+        <article class="sc-track sc-track--flip">
+
+          <div class="sc-track__info">
+            <span class="sc-track__index">06</span>
+            <h2 class="sc-track__title">Before the Run</h2>
+            <div class="sc-track__meta">
+              <span class="sc-track__meta-item">
+                <span>GAME:</span>Scalerunner 20XX
+              </span>
+              <span class="sc-track__meta-item">
+                <span>YEAR:</span>2024
+              </span>
+            </div>
+            <div class="sc-track__moods">
+              <span class="sc-track__mood">Apprehensive</span>
+              <span class="sc-track__mood">Calm</span>
+              <span class="sc-track__mood">Electronic</span>
+            </div>
+            <p class="sc-track__desc">
+              <i>Scalerunner 20XX</i> was made by a team of five over a 1-week span for the 2024 GameMaker's Toolkit game jam. 
+              Featuring a cyber-augmented gecko with a grappling hook, the player is tasked with finding their way out of a dark, 
+              dangerous experimentation facility, avoiding enemies and finding upgrades as they go.
+              <br><br>
+              <i>Before the Run</i> is heard in the safe rooms found before and during a run where the player can choose and collect 
+              power-ups. As the soundtrack to the player's moment of respite from the tension, my aim was to keep the music low intensity, but to maintain
+              a sense of apprehension for the events to follow. Atmospheric synths, noncommittal harmonies, and delicate patters of synthetic percussion 
+              give this track its cyberpunk vibe.
+              <br><br>
+              Check out the game <a style="color: var(--accent);" target="_blank" href="https://petermatyja.itch.io/scalerunner-20xx">here</a>!
+            </p>
+          </div>
+
+          <div class="sc-track__embed">
+            <div class="audio-player" data-src="/assets/preproom.mp3" data-bpm="44.5">  <!-- ← update path -->
+              <div class="audio-player__artwork framed">
+                <img src="/assets/scalerunner.png" alt="Scalerunner 20XX" />  
+                <div class="audio-player__glow"></div>
+              </div>
+              <div class="audio-player__controls">
+                <button class="audio-player__playpause" aria-label="Play">▶</button>
+                <div class="audio-player__timeline">
+                  <div class="audio-player__track">
+                    <div class="audio-player__progress"></div>
+                  </div>
+                </div>
+                <div class="audio-player__volume">
+                  <button class="audio-player__vol-btn" data-action="down">−</button>
+                  <span class="audio-player__vol-display">80</span>
+                  <button class="audio-player__vol-btn" data-action="up">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </article>
+        <!--
+          ── To add more tracks, copy one of the <article> blocks above.
+             Alternate between:
+               class="sc-track"             (text left,  embed right — odd entries)
+               class="sc-track sc-track--flip" (text right, embed left  — even entries)
+        -->
+
+      </div>
+    </section>
+
+  </main>
+<script>
+  (() => {
+    const VOL_STEP = 10;
+    let globalVolume = 80;
+
+    function applyGlobalVolume() {
+      document.querySelectorAll('.audio-player').forEach(p => {
+        if (p._audio) p._audio.volume = globalVolume / 100;
+        const disp = p.querySelector('.audio-player__vol-display');
+        if (disp) disp.textContent = globalVolume;
+      });
+    }
+
+    document.querySelectorAll('.audio-player').forEach(player => {
+      const audio   = new Audio(player.dataset.src);
+      const bpm     = parseFloat(player.dataset.bpm) || 120;
+      const beatDur = 60 / bpm;   // seconds per beat
+
+      audio.volume  = globalVolume / 100;
+      player._audio = audio;
+
+      const playBtn  = player.querySelector('.audio-player__playpause');
+      const progress = player.querySelector('.audio-player__progress');
+      const timeline = player.querySelector('.audio-player__timeline');
+      const glow     = player.querySelector('.audio-player__glow');
+
+      let rafId = null;
+
+      // ── Beat glow loop ─────────────────────────────────────
+      // phase 0–1 within each beat:
+      //   0.00–0.10 → sharp linear attack to full intensity
+      //   0.10–0.50 → quadratic decay back to zero
+      //   0.50–1.00 → silence (glow fully off)
+      // This mimics the fast transient of a drum hit.
+      function beatLoop() {
+        const phase = (audio.currentTime % beatDur) / beatDur;
+        let intensity;
+        if (phase < 0.10) {
+          intensity = phase / 0.10;
+        } else if (phase < 0.50) {
+          intensity = Math.pow(1 - (phase - 0.10) / 0.40, 2);
+        } else {
+          intensity = 0;
+        }
+        glow.style.opacity = intensity;
+        rafId = requestAnimationFrame(beatLoop);
+      }
+
+      function startGlow() {
+        if (!rafId) rafId = requestAnimationFrame(beatLoop);
+      }
+
+      function stopGlow() {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        glow.style.opacity = 0;
+      }
+
+      // ── Play / pause ───────────────────────────────────────
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          document.querySelectorAll('.audio-player').forEach(p => {
+            if (p !== player && p._audio && !p._audio.paused) {
+              p._audio.pause();
+              p.querySelector('.audio-player__playpause').textContent = '▶';
+              // stopGlow is called via the pause event on that player's audio
+            }
+          });
+          audio.play();
+          playBtn.textContent = '⏸';
+        } else {
+          audio.pause();
+          playBtn.textContent = '▶';
+        }
+      });
+
+      audio.addEventListener('play',  startGlow);
+      audio.addEventListener('pause', stopGlow);
+
+      // ── Progress tracking ──────────────────────────────────
+      audio.addEventListener('timeupdate', () => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = pct + '%';
+        progress.classList.toggle('has-progress', pct > 0);
+      });
+
+      // ── Reset on end ───────────────────────────────────────
+      audio.addEventListener('ended', () => {
+        playBtn.textContent = '▶';
+        progress.style.width = '0%';
+        progress.classList.remove('has-progress');
+        stopGlow();
+      });
+
+      // ── Seek on timeline click ─────────────────────────────
+      // Because the glow derives its phase purely from currentTime,
+      // it snaps to the correct beat position the next rAF frame
+      // automatically — no extra handling needed.
+      timeline.addEventListener('click', e => {
+        if (!audio.duration) return;
+        const rect = timeline.querySelector('.audio-player__track').getBoundingClientRect();
+        const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        audio.currentTime = pct * audio.duration;
+      });
+
+      // ── Volume buttons (global) ────────────────────────────
+      player.querySelectorAll('.audio-player__vol-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const delta = btn.dataset.action === 'up' ? VOL_STEP : -VOL_STEP;
+          globalVolume = Math.max(0, Math.min(100, globalVolume + delta));
+          applyGlobalVolume();
+        });
+      });
+    });
+
+    applyGlobalVolume();
+  })();
+</script>
+</body>
+</html>
